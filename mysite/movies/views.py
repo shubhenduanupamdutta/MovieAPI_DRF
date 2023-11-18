@@ -6,5 +6,15 @@ from .models import MovieData
 
 
 class MovieViewSet(viewsets.ModelViewSet):
-    queryset = MovieData.objects.all().order_by('name')
+    queryset = MovieData.objects.all().order_by('id')
+    serializer_class = MovieSerializer
+
+
+class ActionViewSet(viewsets.ModelViewSet):
+    queryset = MovieData.objects.filter(genre='action').order_by('id')
+    serializer_class = MovieSerializer
+
+
+class ComedyViewSet(viewsets.ModelViewSet):
+    queryset = MovieData.objects.filter(genre='comedy').order_by('id')
     serializer_class = MovieSerializer
